@@ -1,11 +1,14 @@
 const express = require("express");
 const connection = require("./db");
 const empRoutes = require("./controller/emp.controller");
+const bodyParser = require("body-parser");
+require("body-parser");
 require("express-async-errors");
 const PORT = 3000;
 
 const app = express();
 
+app.use(bodyParser.json());
 app.use("/api/employees", empRoutes);
 
 app.use((err, req, res, next) => {
